@@ -37,5 +37,5 @@ jobs:
             #echo "repo $GITHUB_REPOSITORY"
             #echo "ws $GITHUB_WORKSPACE"
             #echo "action path $GITHUB_ACTION_PATH"
-            cd /home/runner/work/userprofile
+            cd /home/runner/work
             az acr build --image "devopsoh/api-userprofile:v_${GITHUB_RUN_NUMBER}" --registry $ACRNAME --file Dockerfile .
