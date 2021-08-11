@@ -33,5 +33,5 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
     - name: Image
       run: |
-            cd ../..
+            cd ..
             az acr build --image "devopsoh/api-userprofile:v_${GITHUB_RUN_NUMBER}" --registry $ACRNAME --file Dockerfile .
