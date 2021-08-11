@@ -29,3 +29,15 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - name: Log in with Azure
+      uses: azure/login@v1
+      with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+    - name: Image
+      run: |
+            echo "Building API-USERPROFILE image..."
+            #echo "repo $GITHUB_REPOSITORY"
+            #echo "ws $GITHUB_WORKSPACE"
+            #echo "action path $GITHUB_ACTION_PATH"
+            cd /home/runner/work/userprofile
+            az acr build --image "devopsoh/api-userprofile:v_${GITHUB_RUN_NUMBER}" --registry $ACRNAME --file Dockerfile .
