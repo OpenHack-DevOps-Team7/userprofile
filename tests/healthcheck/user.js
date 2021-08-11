@@ -68,7 +68,7 @@ Test('/healthcheck/user', function (t) {
                     if (Object.keys(response).length <= 0) {
                         response = res.text;
                     }
-                    t.ok(validate(response), 'Valid response');
+                    t.ok(validate(response), 'Valid response123');
                     t.error(validate.errors, 'No validation errors');
                     t.end();
                 });
