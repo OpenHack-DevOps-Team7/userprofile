@@ -50,7 +50,7 @@ Test('/healthcheck/user', function (t) {
                 } else if (mock.request.formData){
                     //Send the request form data
                     request = request.send(mock.request.formData);
-                    //Set the Content-Type as application/x-www-form-urlencoded
+                    //Set the Content-Type as application/x-www-form-urlencoded test
                     request = request.set('Content-Type', 'application/x-www-form-urlencoded');
                 }
                 // If headers are present, set the headers.
