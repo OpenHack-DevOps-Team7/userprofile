@@ -38,3 +38,9 @@ jobs:
         app-name: 'openhackahx2xw01userprofile'
         slot-name: 'staging'
         images: 'openhackahx2xw01acr.azurecr.io/devopsoh/api-userprofile:v_${{github.run_number}}'
+    - name: Swap staging slot into production
+      id: slot_swap
+      run: |
+        az webapp deployment slot swap -g "openhackahx2xw01rg" -n "openhackahx2xw01userprofile" -s staging
+        url=$(az webapp show -g "openhackahx2xw01rg" -n "openhackahx2xw01userprofile" --query "defaultHostName" -o tsv)
+        echo "::set-output name=url::http://$url"
