@@ -34,9 +34,8 @@ jobs:
             az acr build --image "devopsoh/api-userprofile:v_${GITHUB_RUN_NUMBER}" --registry openhackahx2xw01acr --file Dockerfile .
             echo "GITHUB_RUN_NUMBER: $GITHUB_RUN_NUMBER"
     - name: App deployment
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-container-deploy@v1
       with:
         app-name: 'openhackahx2xw01userprofile'
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         slot-name: 'staging'
         images: 'openhackahx2xw01acr.azurecr.io/devopsoh/api-userprofile:v_${GITHUB_RUN_NUMBER}'
