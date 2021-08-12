@@ -44,3 +44,8 @@ jobs:
         az webapp deployment slot swap -g "openhackahx2xw01rg" -n "openhackahx2xw01userprofile" -s staging
         url=$(az webapp show -g "openhackahx2xw01rg" -n "openhackahx2xw01userprofile" --query "defaultHostName" -o tsv)
         echo "::set-output name=url::http://$url"
+
+    - name: Shut down staging slot after swap
+      id: slot_shotdown
+      run: | 
+        az webapp stop --name openhackahx2xw01userprofile -s staging --resource-group openhackahx2xw01rg
