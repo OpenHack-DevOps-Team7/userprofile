@@ -31,7 +31,7 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
     - name: Image
       run: |
-            az acr build --image "devopsoh/api-userprofile:v_${github.run_number}" --registry $ACRNAME --file Dockerfile .
+            az acr build --image "devopsoh/api-userprofile:v_${GITHUB_RUN_NUMBER}" --registry $ACRNAME --file Dockerfile .
     - name: App deployment
       uses: azure/webapps-deploy@v2
       with:
